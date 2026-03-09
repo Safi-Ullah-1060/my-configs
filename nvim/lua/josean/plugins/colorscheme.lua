@@ -1,51 +1,34 @@
 return {
     "rebelot/kanagawa.nvim",
-    -- "folke/tokyonight.nvim",
     priority = 1000,
-    --[[config = function()
-        local transparent = true -- set to true if you would like to enable transparency
-
-        local bg = "#011628"
-        local bg_dark = "#011423"
-        local bg_highlight = "#143652"
-        local bg_search = "#0A64AC"
-        local bg_visual = "#275378"
-        local fg = "#CBE0F0"
-        local fg_dark = "#B4D0E9"
-        local fg_gutter = "#627E97"
-        local border = "#547998"
-
-        require("tokyonight").setup({
-            style = "night",
-            transparent = transparent,
-            styles = {
-                sidebars = transparent and "transparent" or "dark",
-                floats = transparent and "transparent" or "dark",
-            },
-            on_colors = function(colors)
-                colors.bg = bg
-                colors.bg_dark = transparent and colors.none or bg_dark
-                colors.bg_float = transparent and colors.none or bg_dark
-                colors.bg_highlight = bg_highlight
-                colors.bg_popup = bg_dark
-                colors.bg_search = bg_search
-                colors.bg_sidebar = transparent and colors.none or bg_dark
-                colors.bg_statusline = transparent and colors.none or bg_dark
-                colors.bg_visual = bg_visual
-                colors.border = border
-                colors.fg = fg
-                colors.fg_dark = fg_dark
-                colors.fg_float = fg
-                colors.fg_gutter = fg_gutter
-                colors.fg_sidebar = fg_dark
-            end,
-        })
-        --require("kanagawa").load("dragon")
-        vim.cmd("colorscheme kanagawa")
-        --vim.cmd("colorscheme tokyonight")
-    end,]]
     config = function()
-        require("kanagawa").setup({ transparent = true, theme = "dragon" })
+        require("kanagawa").setup({
+            overrides = function(colors)
+                local palette = colors.palette -- ← access via the passed colors object (preferred)
+                -- local palette = require("kanagawa.colors").palette  -- this also works but is less "theme-aware"
+
+                return {
+                    CursorLineNr = { fg = palette.roninYellow, bold = true },
+                    LineNr = { fg = palette.waveAqua2 },
+
+                    -- If you want to override the relative-line variants (Neovim 0.10+):
+                    -- LineNrAbove = { fg = palette.oldWhite },
+                    -- LineNrBelow = { fg = palette.oldWhite },
+                }
+            end,
+
+            theme = "dragon", -- this selects the base theme to load
+
+            background = { -- map :set background=XXX → theme
+                dark = "dragon",
+                light = "lotus",
+            },
+
+            -- other options you might want...
+            -- compile = true,         -- speeds up startup after first compile
+            -- transparent = false,
+            -- commentStyle = { italic = true },
+        })
         vim.cmd("colorscheme kanagawa")
     end,
 }

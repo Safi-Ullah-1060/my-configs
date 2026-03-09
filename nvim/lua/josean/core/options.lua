@@ -37,3 +37,8 @@ opt.splitbelow = true -- split horizontal window to the bottom
 
 -- turn off swapfile
 opt.swapfile = false
+
+-- -- turn on collpase and expand code blocks
+-- opt.foldmethod = "expr"
+-- opt.foldexpr = "nvim-treesitter"
+-- opt.foldlevel = 20

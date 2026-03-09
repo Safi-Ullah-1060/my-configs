@@ -1,0 +1,14 @@
+[Desktop Entry]
+DefaultProfile=My Default.profile
+
+[General]
+ConfigVersion=1
+
+[KonsoleWindow]
+AllowMenuAccelerators=true
+
+[MainWindow]
+MenuBar=Disabled
+
+[UiSettings]
+ColorScheme=

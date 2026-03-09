@@ -1,0 +1,14 @@
+# Ignore everything by default
+*
+
+# Then explicitly un-ignore what you want to track
+!.gitignore
+!nvim/
+!nvim/**
+!nvim-qt/
+!nvim-qt/**
+!konsolerc/
+!konsolerc/**
+!fish/
+!fish/**
+!starship.toml

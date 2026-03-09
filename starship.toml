@@ -1,0 +1,16 @@
+[username]
+show_always = true
+style_user = "bright-blue"
+style_root = "bright-red"
+
+[hostname]
+ssh_only = false
+style = "bright-blue"
+
+[directory]
+truncation_length = 0
+style = "bright-blue"
+
+[character]
+success_symbol = "[🗸](cyan)"
+error_symbol = "[✗](red)"

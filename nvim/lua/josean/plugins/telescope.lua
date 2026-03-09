@@ -2,7 +2,7 @@
 return {
     {
         "nvim-telescope/telescope.nvim",
-        branch = "0.1.x", -- or branch = "0.1.x" if you prefer
+        branch = "master", -- or branch = "0.1.x" if you prefer
         dependencies = {
             "nvim-lua/plenary.nvim",
             {
