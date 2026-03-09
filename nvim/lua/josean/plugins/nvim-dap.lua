@@ -19,18 +19,29 @@ return {
             })
 
             -- ─── DAP UI ───────────────────────────────────────────────────────────────
+            -- The "console" element is dap-ui's own managed integrated terminal.
+            -- It correctly handles buffer lifecycle (open/close/reopen) across sessions,
+            -- unlike raw terminal_win_cmd which is subject to nvim-dap's buffer pooling.
+            -- We put it in a bottom tray so it sits below the source + right sidebar.
             dapui.setup({
                 icons = { expanded = "▾", collapsed = "▸", current_frame = "▸" },
 
                 layouts = {
                     {
                         position = "right",
-                        size = 40,
+                        size = 32,
                         elements = {
-                            { id = "scopes", size = 0.40 },
-                            { id = "watches", size = 0.20 },
-                            { id = "stacks", size = 0.25 },
-                            { id = "breakpoints", size = 0.15 },
+                            { id = "scopes", size = 0.30 },
+                            { id = "watches", size = 0.25 },
+                            { id = "stacks", size = 0.27 },
+                            { id = "breakpoints", size = 0.18 },
+                        },
+                    },
+                    {
+                        position = "bottom",
+                        size = 10,
+                        elements = {
+                            { id = "console", size = 1.0 },
                         },
                     },
                 },
@@ -53,34 +64,18 @@ return {
                 },
             })
 
-            -- ─── Clear nvim-dap terminal pool on session end ───────────────────────────
-            -- nvim-dap caches the terminal buffer it opens for integratedTerminal.
-            -- If that buffer gets :q'd, nvim-dap still thinks it's valid and won't call
-            -- terminal_win_cmd again — so no terminal opens on the next session.
-            -- Wiping the internal field on terminate/exit forces a fresh one every time.
-            local function clear_terminal_pool()
-                dap.defaults.fallback._terminal_buf = nil
+            dap.listeners.before.attach.dapui_config = function()
+                dapui.open()
             end
-
-            dap.listeners.before.event_terminated.clear_term = clear_terminal_pool
-            dap.listeners.before.event_exited.clear_term = clear_terminal_pool
-
-            -- Catches the case where the user manually :q's the terminal mid-session
-            vim.api.nvim_create_autocmd("TermClose", {
-                callback = function(args)
-                    if dap.defaults.fallback._terminal_buf == args.buf then
-                        dap.defaults.fallback._terminal_buf = nil
-                    end
-                end,
-                desc = "Clear nvim-dap terminal pool when I/O window is :q'd",
-            })
-
-            -- ─── Terminal window command ───────────────────────────────────────────────
-            -- Used by cppdbg's integratedTerminal to open I/O.
-            -- A plain string is used (not a function) — nvim-dap always creates a new
-            -- split from a string command, avoiding the "requires unmodified buffer" error
-            -- that happens when it tries to reuse a pooled buffer.
-            dap.defaults.fallback.terminal_win_cmd = "belowright 12new"
+            dap.listeners.before.launch.dapui_config = function()
+                dapui.open()
+            end
+            dap.listeners.before.event_terminated.dapui_config = function()
+                dapui.close()
+            end
+            dap.listeners.before.event_exited.dapui_config = function()
+                dapui.close()
+            end
 
             -- ─── cpptools adapter ─────────────────────────────────────────────────────
             dap.adapters.cppdbg = {
@@ -121,9 +116,9 @@ return {
             end
 
             -- ─── C / C++ debug configurations ─────────────────────────────────────────
-            -- console = "integratedTerminal": cppdbg sends a runInTerminal request to
-            -- nvim-dap, which opens a real PTY terminal using terminal_win_cmd above.
-            -- The process runs inside it so cin/cout work natively.
+            -- console = "integratedTerminal": cppdbg routes the inferior's I/O through
+            -- the integrated terminal, which dap-ui's "console" element displays and
+            -- manages. cin/cout work natively since it's a real PTY.
             dap.configurations.cpp = {
                 {
                     name = "Build & Debug active file",
@@ -171,9 +166,6 @@ return {
             map("n", "<F7>", dap.step_into, { desc = "DAP: Step Into" })
             map("n", "<F8>", dap.step_out, { desc = "DAP: Step Out" })
             map("n", "<F9>", dap.repl.open, { desc = "DAP: Open REPL" })
-            map({ "n", "v" }, "<leader>dv", function()
-                require("dapui").eval()
-            end, { desc = "DAP: Eval under cursor" })
 
             map("n", "<leader>dx", function()
                 dap.terminate()
@@ -210,6 +202,11 @@ return {
             end, { desc = "DAP: Build & Run (no debug)" })
 
             map("n", "<leader>du", dapui.toggle, { desc = "DAP: Toggle UI" })
+
+            -- Eval expression under cursor (n) or selected expression (v)
+            map({ "n", "v" }, "<leader>dv", function()
+                dapui.eval()
+            end, { desc = "DAP: Eval expression" })
         end,
     },
 }
