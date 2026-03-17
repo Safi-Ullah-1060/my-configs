@@ -1,14 +1,27 @@
 # Ignore everything by default
 *
 
-# Then explicitly un-ignore what you want to track
+# Top-level exceptions
 !.gitignore
-!nvim/
-!nvim/**
-!nvim-qt/
-!nvim-qt/**
-!konsolerc/
-!konsolerc/**
-!fish/
-!fish/**
-!starship.toml
+!LICENSE
+!install.sh
+!config/
+!etc/
+
+# config/ tracked folders and files
+!config/nvim/
+!config/nvim/**
+!config/nvim-qt/
+!config/nvim-qt/**
+!config/fish/
+!config/fish/**
+!config/starship.toml
+!config/konsolerc
+
+# etc/ - all tracked
+!etc/sysctl/
+!etc/sysctl/**
+!etc/tmpfiles/
+!etc/tmpfiles/**
+!etc/scx_loader/
+!etc/scx_loader/**
