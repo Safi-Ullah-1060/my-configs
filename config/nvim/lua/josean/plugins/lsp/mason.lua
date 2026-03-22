@@ -1,60 +1,62 @@
 return {
+    -- ── Core Mason (only loads when :Mason is called) ──────────────────────────
     {
         "mason-org/mason.nvim",
         cmd = "Mason",
         keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } },
-        config = true,
-    },
-    {
-        "williamboman/mason-lspconfig.nvim",
         opts = {
-            -- list of servers for mason to install
-            ensure_installed = {
-                "ts_ls",
-                "html",
-                "cssls",
-                "tailwindcss",
-                "svelte",
-                "lua_ls",
-                "graphql",
-                "emmet_ls",
-                "prismals",
-                "pyright",
-                "eslint",
-                "clangd",
-            },
-        },
-        dependencies = {
-            {
-                "williamboman/mason.nvim",
-                opts = {
-                    ui = {
-                        icons = {
-                            package_installed = "✓",
-                            package_pending = "➜",
-                            package_uninstalled = "✗",
-                        },
-                    },
+            ui = {
+                icons = {
+                    package_installed = "✓",
+                    package_pending = "➜",
+                    package_uninstalled = "✗",
                 },
             },
-            "neovim/nvim-lspconfig",
         },
     },
+
+    -- ── LSP server installer ───────────────────────────────────────────────────
+    -- Loads on BufReadPre so LSP is ready when you open a file,
+    -- but not during the initial startup splash.
     {
-        "WhoIsSethDaniel/mason-tool-installer.nvim",
+        "williamboman/mason-lspconfig.nvim",
+        event = "BufReadPre",
+        dependencies = {
+            "mason-org/mason.nvim",
+            "neovim/nvim-lspconfig",
+        },
         opts = {
             ensure_installed = {
-                "prettier", -- prettier formatter
-                "stylua", -- lua formatter
-                "isort", -- python formatter
-                "black", -- python formatter
-                "pylint",
-                "eslint_d",
+                -- Keep only what you actively use
+                "lua_ls", -- Lua (nvim config)
+                "bashls", -- Bash
+                "pyright", -- Python
+                "clangd", -- C/C++
+                -- Web tools removed — add back if you return to web dev:
+                -- "ts_ls", "html", "cssls", "tailwindcss",
+                -- "svelte", "graphql", "emmet_ls", "prismals", "eslint",
+            },
+        },
+    },
+
+    -- ── Formatter / linter installer ──────────────────────────────────────────
+    -- VeryLazy = loads after UI, does not block startup at all
+    {
+        "WhoIsSethDaniel/mason-tool-installer.nvim",
+        event = "VeryLazy",
+        dependencies = { "mason-org/mason.nvim" },
+        opts = {
+            ensure_installed = {
+                "stylua", -- Lua formatter
+                "black", -- Python formatter
+                "isort", -- Python import sorter
+                "shfmt", -- Bash Formattter
+                "shellcheck", -- Bash Linter
+                "pylint", -- Python linter
+                "clang-format", -- C/C++ formatter
+                -- Removed: prettier, eslint_d (web dev tools)
             },
             automatic_enable = true,
-        },
-        dependencies = {
-            "williamboman/mason.nvim",
         },
     },
 }

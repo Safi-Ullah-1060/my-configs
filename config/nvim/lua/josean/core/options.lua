@@ -6,39 +6,43 @@ opt.relativenumber = true
 opt.number = true
 
 -- tabs & indentation
-opt.tabstop = 4 -- 4 spaces for tabs (prettier default)
-opt.shiftwidth = 4 -- 4 spaces for indent width
-opt.expandtab = true -- expand tab to spaces
-opt.autoindent = true -- copy indent from current line when starting new one
+opt.tabstop = 4
+opt.shiftwidth = 4
+opt.expandtab = true
+opt.autoindent = true
 
 opt.wrap = true
 
 -- search settings
-opt.ignorecase = true -- ignore case when searching
-opt.smartcase = true -- if you include mixed case in your search, assumes you want case-sensitive
+opt.ignorecase = true
+opt.smartcase = true
 
 opt.cursorline = true
 
--- turn on termguicolors for tokyonight colorscheme to work
--- (have to use iterm2 or any other true color terminal)
 opt.termguicolors = true
-opt.background = "dark" -- colorschemes that can be light or dark will be made dark
-opt.signcolumn = "yes" -- show sign column so that text doesn't shift
+opt.background = "dark"
+opt.signcolumn = "yes"
 
 -- backspace
-opt.backspace = "indent,eol,start" -- allow backspace on indent, end of line or insert mode start position
+opt.backspace = "indent,eol,start"
 
 -- clipboard
--- opt.clipboard:append("unnamedplus") -- use system clipboard as default register
+-- opt.clipboard:append("unnamedplus")
 
 -- split windows
-opt.splitright = true -- split vertical window to the right
-opt.splitbelow = true -- split horizontal window to the bottom
+opt.splitright = true
+opt.splitbelow = true
 
--- turn off swapfile
+-- swapfile
 opt.swapfile = false
 
--- -- turn on collpase and expand code blocks
--- opt.foldmethod = "expr"
--- opt.foldexpr = "nvim-treesitter"
--- opt.foldlevel = 20
+-- ── Performance tweaks ────────────────────────────────────────────────────────
+-- Default is 4000ms — way too slow for gitsigns, diagnostics, hover docs.
+-- 250ms is the sweet spot: fast enough to feel snappy, not so fast it hammers
+-- the LSP on every keystroke.
+opt.updatetime = 250
+
+-- Reduce mapped sequence wait time (default 1000ms).
+-- Affects how long Neovim waits for the next key in a keymap sequence.
+-- 300ms feels instant without breaking multi-key leader sequences.
+opt.timeoutlen = 300

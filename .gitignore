@@ -17,6 +17,8 @@
 !config/fish/**
 !config/starship.toml
 !config/konsolerc
+!config/environment.d
+!config/environment.d/**
 
 # etc/ - all tracked
 !etc/sysctl/

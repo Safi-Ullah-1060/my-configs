@@ -16,6 +16,10 @@ else
     ln -s "$DOTFILES_DIR/config" "$HOME/.config"
 fi
 
+# Install and configure deno
+curl -fsSL https://deno.land/install.sh | sh
+sudo ln -s ~/.deno/bin/deno /usr/local/bin/deno
+
 echo "==> Installing CachyOS kernel and performance tweaks..."
 
 # Enable COPR repos

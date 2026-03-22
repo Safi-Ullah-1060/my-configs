@@ -19,7 +19,7 @@ set(CMAKE_CXX_STANDARD {std})
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 file(GLOB SOURCES src/*.cpp)
-add_executable({exe} ${{SOURCES}})
+add_executable({exe} {exe}.cpp ${{SOURCES}})
 target_include_directories({exe} PRIVATE {inc})
     ]],
             {

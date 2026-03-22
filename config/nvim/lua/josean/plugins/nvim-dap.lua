@@ -1,6 +1,24 @@
 return {
     {
         "mfussenegger/nvim-dap",
+        -- Lazy load: only initialise DAP when a debug keymap is first triggered.
+        -- This saves ~17ms on every startup where you are not debugging.
+        keys = {
+            { "<leader>dd", desc = "DAP: Build & Debug" },
+            { "<leader>dr", desc = "DAP: Build & Run" },
+            { "<leader>db", desc = "DAP: Build Release" },
+            { "<leader>dx", desc = "DAP: Terminate" },
+            { "<leader>du", desc = "DAP: Toggle UI" },
+            { "<leader>dv", desc = "DAP: Eval expression" },
+            { "<leader>b", desc = "DAP: Toggle Breakpoint" },
+            { "<leader>B", desc = "DAP: Conditional Breakpoint" },
+            { "<F5>", desc = "DAP: Continue" },
+            { "<F4>", desc = "DAP: Restart" },
+            { "<F6>", desc = "DAP: Step Over" },
+            { "<F7>", desc = "DAP: Step Into" },
+            { "<F8>", desc = "DAP: Step Out" },
+            { "<F9>", desc = "DAP: Open REPL" },
+        },
         dependencies = {
             "rcarriga/nvim-dap-ui",
             "nvim-neotest/nvim-nio",
