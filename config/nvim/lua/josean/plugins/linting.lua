@@ -9,7 +9,7 @@ return {
         -- unused imports) without the overhead. Use <leader>l to run pylint manually
         -- when you want a deep check.
         lint.linters_by_ft = {
-            python = { "pyflakes" }, -- fast, runs on save
+            python = { "ruff" }, -- fast, runs on save
             sh = { "shellcheck" },
             bash = { "shellcheck" },
         }

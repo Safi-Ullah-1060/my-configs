@@ -13,6 +13,8 @@ return {
                 -- Rendered in normal, command and terminal modes.
                 -- In insert mode raw markdown is shown so you can edit cleanly.
                 render_modes = { "n", "c", "t" },
+                -- Disabled by default — toggle with <leader>mt when you want preview
+                enabled = false,
 
                 -- ── Headings ────────────────────────────────────────────────────────
                 -- Each level gets a different icon and background highlight.

@@ -31,6 +31,7 @@ return {
                 "lua_ls", -- Lua (nvim config)
                 "bashls", -- Bash
                 "pyright", -- Python
+                "bashls", -- Bash
                 "clangd", -- C/C++
                 -- Web tools removed — add back if you return to web dev:
                 -- "ts_ls", "html", "cssls", "tailwindcss",
@@ -54,6 +55,8 @@ return {
                 "shellcheck", -- Bash Linter
                 "pylint", -- Python linter
                 "clang-format", -- C/C++ formatter
+                "markdown-toc", -- MD formatter
+                "markdownlint-cli2", -- MD formatter
                 -- Removed: prettier, eslint_d (web dev tools)
             },
             automatic_enable = true,

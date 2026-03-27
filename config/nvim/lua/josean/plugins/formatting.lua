@@ -15,7 +15,7 @@ return {
                 html = { "prettier" },
                 json = { "prettier" },
                 yaml = { "prettier" },
-                markdown = { "prettier" },
+                markdown = { "prettier", "markdownlint-cli2" },
                 graphql = { "prettier" },
                 liquid = { "prettier" },
                 lua = { "stylua" },

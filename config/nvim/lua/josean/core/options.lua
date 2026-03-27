@@ -45,4 +45,4 @@ opt.updatetime = 250
 -- Reduce mapped sequence wait time (default 1000ms).
 -- Affects how long Neovim waits for the next key in a keymap sequence.
 -- 300ms feels instant without breaking multi-key leader sequences.
-opt.timeoutlen = 300
+opt.timeoutlen = 800

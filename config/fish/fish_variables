@@ -1,5 +1,6 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
+SETUVAR --export EDITOR:/usr/bin/nvim
 SETUVAR __fish_initialized:3800
 SETUVAR --export cfg:/home/sullah/\x2econfig
 SETUVAR fish_color_autosuggestion:brblack
@@ -38,4 +39,5 @@ SETUVAR fish_pager_color_selected_background:\x2dr
 SETUVAR fish_pager_color_selected_completion:\x1d
 SETUVAR fish_pager_color_selected_description:\x1d
 SETUVAR fish_pager_color_selected_prefix:\x1d
+SETUVAR --export km:/home/sullah/dotfiles/Keymaps\x2emd
 SETUVAR --export uni:/home/sullah/Uni\x20Data/Sem\x20IV
