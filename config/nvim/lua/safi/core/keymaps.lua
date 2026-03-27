@@ -13,7 +13,7 @@ local map = vim.keymap.set
 -- ─── General ──────────────────────────────────────────────────────────────────
 map("i", "jk", "<ESC>", { desc = "Exit insert mode" })
 map("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
-map("n", "<leader>+", "<C-a>", { desc = "Increment number" })
+map("n", "<leader>=", "<C-a>", { desc = "Increment number" })
 map("n", "<leader>-", "<C-x>", { desc = "Decrement number" })
 
 -- ─── Window management ────────────────────────────────────────────────────────
