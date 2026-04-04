@@ -22,6 +22,7 @@ return {
                 python = { "black" },
                 sh = { "shfmt" },
                 bash = { "shfmt" },
+                sql = { "sqruff" },
             },
             format_on_save = {
                 lsp_fallback = true,
