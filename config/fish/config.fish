@@ -14,8 +14,7 @@ set -Ux km "$HOME/dotfiles/Keymaps.md"
 set -Ux uni "$HOME/Uni Data/Sem IV"
 set -Ux cfg "$HOME/.config"
 set -gx EDITOR "/usr/bin/nvim"
-alias cachyos-update-kernel 'sudo dracut -fv --kver $(ls /lib/modules | grep -i cachyos | tail -1) && sudo grubby --set-default $(ls /boot/vmlinuz-*cachyos* | tail -1)'
-alias fonts='env QT_QPA_PLATFORM=xcb systemsettings kcm_fonts'
+alias update-boot='sudo bootctl update'
 # Optional: Better vi-mode cursor (if you use it)
 # fish_vi_key_bindings
 
