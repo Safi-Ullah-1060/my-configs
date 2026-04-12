@@ -29,6 +29,11 @@ map("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Next tab" })
 map("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Prev tab" })
 map("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open buffer in new tab" })
 
+-- Jump to tab 1, 2, etc. with Alt + number
+for i = 1, 9 do
+    vim.keymap.set('n', '<A-' .. i .. '>', i .. 'gt', { noremap = true })
+end
+
 -- ─── Clipboard ────────────────────────────────────────────────────────────────
 -- map("n", "<leader>y", '"+y',  { desc = "Yank to clipboard" })
 -- map("v", "<leader>y", '"+y',  { desc = "Yank to clipboard" })
