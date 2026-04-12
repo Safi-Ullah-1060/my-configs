@@ -19,14 +19,14 @@ return {
 
             theme = "dragon", -- this selects the base theme to load
 
-            background = { -- map :set background=XXX → theme
+            background = {    -- map :set background=XXX → theme
                 dark = "dragon",
                 light = "lotus",
             },
 
             -- other options you might want...
             -- compile = true,         -- speeds up startup after first compile
-            -- transparent = false,
+            transparent = true,
             -- commentStyle = { italic = true },
         })
         vim.cmd("colorscheme kanagawa")

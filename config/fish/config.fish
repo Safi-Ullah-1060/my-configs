@@ -6,7 +6,6 @@ set -g fish_greeting
 # Initialize Starship
 starship init fish | source
 alias cls="clear"
-alias update-grub="sudo grub2-mkconfig -o /boot/grub2/grub.cfg"
 alias ls='eza --icons=always --color=always'
 alias ll='eza -la --icons=always --color=always'
 alias lt='eza --tree --icons=always --color=always'

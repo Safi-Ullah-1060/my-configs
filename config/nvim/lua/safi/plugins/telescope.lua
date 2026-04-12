@@ -12,12 +12,12 @@ return {
         },
         cmd = "Telescope",
         keys = {
-            { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
-            { "<leader>fg", "<cmd>Telescope live_grep<cr>", desc = "Live Grep" },
-            { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
-            { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help Tags" },
+            { "<leader>ff", "<cmd>Telescope find_files<cr>",            desc = "Find Files" },
+            { "<leader>fg", "<cmd>Telescope live_grep<cr>",             desc = "Live Grep" },
+            { "<leader>fb", "<cmd>Telescope buffers<cr>",               desc = "Buffers" },
+            { "<leader>fh", "<cmd>Telescope help_tags<cr>",             desc = "Help Tags" },
             -- LSP pickers (very useful)
-            { "<leader>fs", "<cmd>Telescope lsp_document_symbols<cr>", desc = "Document Symbols" },
+            { "<leader>fs", "<cmd>Telescope lsp_document_symbols<cr>",  desc = "Document Symbols" },
             { "<leader>fw", "<cmd>Telescope lsp_workspace_symbols<cr>", desc = "Workspace Symbols" },
         },
         config = function()

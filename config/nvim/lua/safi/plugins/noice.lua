@@ -1,34 +1,73 @@
-return -- lazy.nvim
-{
+return {
     "folke/noice.nvim",
     event = "VeryLazy",
-    opts = {
-        -- add any options here
-    },
     dependencies = {
-        -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
         "MunifTanjim/nui.nvim",
-        -- OPTIONAL:
-        --   `nvim-notify` is only needed, if you want to use the notification view.
-        --   If not available, we use `mini` as the fallback
         "rcarriga/nvim-notify",
     },
-    require("noice").setup({
-        lsp = {
-            -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
-            override = {
-                ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-                ["vim.lsp.util.stylize_markdown"] = true,
-                ["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
+    config = function()
+        require("noice").setup({
+
+            -- ── Only intercept cmdline input — nothing else ────────────────────
+            -- Messages, notifications, LSP messages all fall back to Neovim's
+            -- native handling. Only the command input gets the floating popup.
+            messages = {
+                enabled = false, -- native Neovim handles all messages
             },
-        },
-        -- you can enable a preset for easier configuration
-        presets = {
-            bottom_search = true, -- use a classic bottom cmdline for search
-            command_palette = true, -- position the cmdline and popupmenu together
-            long_message_to_split = true, -- long messages will be sent to a split
-            inc_rename = false, -- enables an input dialog for inc-rename.nvim
-            lsp_doc_border = false, -- add a border to hover docs and signature help
-        },
-    }),
+
+            notify = {
+                enabled = false, -- native vim.notify, no floats
+            },
+
+            -- ── Cmdline input popup ────────────────────────────────────────────
+            cmdline = {
+                enabled = true,
+                view    = "cmdline_popup",
+                format  = {
+                    cmdline     = { icon = ">" },
+                    search_down = { icon = "/ ↓" },
+                    search_up   = { icon = "/ ↑" },
+                    filter      = { icon = "$" },
+                    lua         = { icon = "☾" },
+                    help        = { icon = "?" },
+                },
+            },
+
+            -- ── LSP styling only ──────────────────────────────────────────────
+            lsp = {
+                override = {
+                    ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+                    ["vim.lsp.util.stylize_markdown"]                = true,
+                    ["cmp.entry.get_documentation"]                  = true,
+                },
+                progress = { enabled = false }, -- no LSP progress floats
+            },
+
+            -- ── Presets ───────────────────────────────────────────────────────
+            presets = {
+                bottom_search   = true, -- / and ? stay at bottom natively
+                command_palette = false,
+                lsp_doc_border  = true,
+            },
+
+            -- ── Cmdline popup position ────────────────────────────────────────
+            views = {
+                cmdline_popup = {
+                    position    = { row = "40%", col = "50%" },
+                    size        = { width = 60, height = "auto" },
+                    border      = { style = "rounded", padding = { 0, 1 } },
+                    win_options = {
+                        winhighlight = "Normal:Normal,FloatBorder:FloatBorder",
+                    },
+                },
+            },
+        })
+
+        -- ── Keymaps ───────────────────────────────────────────────────────────
+
+        -- Clear cmdline area (native)
+        vim.keymap.set("n", "<leader>cn", function()
+            vim.cmd("echo ''")
+        end, { desc = "Clear cmdline output" })
+    end,
 }
