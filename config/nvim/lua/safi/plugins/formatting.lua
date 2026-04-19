@@ -19,7 +19,7 @@ return {
                 graphql = { "prettier" },
                 liquid = { "prettier" },
                 lua = { "stylua" },
-                python = { "black" },
+                python = { "ruff" },
                 sh = { "shfmt" },
                 bash = { "shfmt" },
                 sql = { "sqruff" },

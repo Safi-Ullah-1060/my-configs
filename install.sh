@@ -16,6 +16,10 @@ else
     ln -s "$DOTFILES_DIR/config" "$HOME/.config"
 fi
 
+# Copy Dotfiles from ./home to $HOME
+ln -s "$DOTFILES_DIR/home/".* "$HOME/"
+ln -s "$DOTFILES_DIR/home/"*  "$HOME/"
+
 # Install and configure deno
 curl -fsSL https://deno.land/install.sh | sh
 sudo ln -s ~/.deno/bin/deno /usr/local/bin/deno
