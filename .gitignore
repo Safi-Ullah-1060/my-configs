@@ -7,6 +7,7 @@
 !install.sh
 !config/
 !etc/
+!home/
 
 # config/ tracked folders and files
 !config/nvim/
@@ -29,3 +30,6 @@
 !etc/tmpfiles/**
 !etc/scx_loader/
 !etc/scx_loader/**
+
+# home/ - all tracked
+!home/**

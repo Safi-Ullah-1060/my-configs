@@ -1,2 +1,5 @@
 [flavor]
 dark = "gruvbox-dark"
+[mgr]
+cwd = { fg = "white", bold = true }
+border_style = { fg = "darkgray", bold = true }

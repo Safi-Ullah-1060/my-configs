@@ -1,27 +1,31 @@
 [opener]
 edit = [
-  { run = 'nvim %0', block = true, desc = "Neovim", for = "unix" },
-  { run = 'code %0', desc = "Code", for = "unix" },
+  { run = 'nvim %s', block = true, desc = "Neovim", for = "unix" },
+  { run = 'code %s', desc = "Code", for = "unix" },
 ]
 play = [
-  { run = 'mpv %0', for = "unix" },
+  { run = 'mpv %s', for = "unix" },
 ]
 open = [
-	{ run = "xdg-open %01", desc = "Open" },
+	{ run = "xdg-open %s1", desc = "Open" },
     { run = "nvim .", block = true, desc = "Neovim (PWD)" },
     { run = "code .", block = true, desc = "Code (PWD)" },
 ]
 dir = [
-  { run = 'sh -c "cd \"$1\" && nvim " -- "" "%0"', desc = "Neovim", block = true, for = "unix" },
-  { run = '"$0"code %0', desc = "Code", for = "unix" },
+  { run = 'sh -c "cd \"$1\" && nvim " -- "" "%s"', desc = "Neovim", block = true, for = "unix" },
+  { run = '"$0"code %s', desc = "Code", for = "unix" },
+]
+pdf = [
+  { run = 'zathura %s', block = false, desc = "Zathura" }
 ]
 
 [open]
 append_rules = [
   { url = "*/", use = [ "dir", "open" ] },
+  { url = "*.pdf", use = [ "pdf", "open" ]},
   { mime = "audio/*", use = "play" },
   { mime = "video/*", use = "play" },
-  { url = "*", use = [ "edit", "open" ]},
+  { url = "*", use = [ "open", "edit" ]},
 ]
 
 [mgr]

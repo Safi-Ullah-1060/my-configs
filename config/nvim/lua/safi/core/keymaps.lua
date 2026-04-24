@@ -26,13 +26,13 @@ map("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close current split" })
 -- ─── Tab management ───────────────────────────────────────────────────────────
 map("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "New tab" })
 map("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close tab" })
-map("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Next tab" })
-map("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Prev tab" })
+map("n", "<leader>]", "<cmd>tabn<CR>", { desc = "Next tab" })
+map("n", "<leader>[", "<cmd>tabp<CR>", { desc = "Prev tab" })
 map("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open buffer in new tab" })
 
 -- Jump to tab 1, 2, etc. with Alt + number
 for i = 1, 9 do
-    vim.keymap.set('n', '<A-' .. i .. '>', i .. 'gt', { noremap = true })
+  vim.keymap.set('n', '<A-' .. i .. '>', i .. 'gt', { noremap = true })
 end
 
 -- ─── Clipboard ────────────────────────────────────────────────────────────────
