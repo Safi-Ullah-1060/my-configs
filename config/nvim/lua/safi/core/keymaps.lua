@@ -15,7 +15,7 @@ map("i", "jk", "<ESC>", { desc = "Exit insert mode" })
 map("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
 map("n", "<leader>=", "<C-a>", { desc = "Increment number" })
 map("n", "<leader>-", "<C-x>", { desc = "Decrement number" })
-map({ "n", "v" }, "<leader>ss", ":w<CR>", { desc = "Write Buffer" })
+map({ "n", "v" }, "<A-s>", ":w<CR>", { desc = "Write Buffer" })
 
 -- ─── Window management ────────────────────────────────────────────────────────
 map("n", "<leader>sv", "<C-w>v", { desc = "Split vertically" })

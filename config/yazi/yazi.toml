@@ -1,15 +1,15 @@
 [opener]
 edit = [
-  { run = 'nvim %s', block = true, desc = "Neovim", for = "unix" },
-  { run = 'code %s', desc = "Code", for = "unix" },
+  { run = 'nvim "$@"', block = true, desc = "Neovim", for = "unix" },
+  { run = 'code "$@"', desc = "Code", for = "unix" },
 ]
 play = [
   { run = 'mpv %s', for = "unix" },
 ]
 open = [
-	{ run = "xdg-open %s1", desc = "Open" },
-    { run = "nvim .", block = true, desc = "Neovim (PWD)" },
-    { run = "code .", block = true, desc = "Code (PWD)" },
+	{ run = 'kde-open "$1"', desc = "Open", for = "unix" },
+  { run = 'nvim .', block = true, desc = "Neovim (PWD)" },
+  { run = 'code .', block = true, desc = "Code (PWD)" },
 ]
 dir = [
   { run = 'sh -c "cd \"$1\" && nvim " -- "" "%s"', desc = "Neovim", block = true, for = "unix" },
@@ -20,12 +20,13 @@ pdf = [
 ]
 
 [open]
-append_rules = [
+prepend_rules = [
   { url = "*/", use = [ "dir", "open" ] },
   { url = "*.pdf", use = [ "pdf", "open" ]},
-  { mime = "audio/*", use = "play" },
-  { mime = "video/*", use = "play" },
-  { url = "*", use = [ "open", "edit" ]},
+  { url = "*.drawio", use = "open" },
+  { url = "*.sql", use = "open" },
+  { mime = "{audio,video}/*", use = "play" },
+  { mime = "text/*", use = "edit" },
 ]
 
 [mgr]
@@ -33,3 +34,8 @@ ratio = [0, 2, 1]
 sort_by = "natural"
 sort_sensitive = true
 sort_dir_first = true
+
+# [fetchers]
+# prepend_fetchers = [
+#   { id = "mime-ext", name = "*", run = "mime-ext", prio = "high" }
+# ]

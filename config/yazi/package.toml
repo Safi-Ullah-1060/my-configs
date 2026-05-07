@@ -13,6 +13,26 @@ use = "KKV9/compress"
 rev = "46a6b9f"
 hash = "771af2becc575a3f43d0542de823969d"
 
+[[plugin.deps]]
+use = "imsi32/yatline"
+rev = "c5d4b48"
+hash = "e6e98d12b1648d1894c2b560d85eeaa7"
+
+[[plugin.deps]]
+use = "imsi32/yatline-gruvbox"
+rev = "f570b77"
+hash = "244048d1c3e7c557796f372c5c01de5d"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:mime-ext"
+rev = "ac82af3"
+hash = "2678c84a0b3a0b22504e918ccaf99011"
+
+[[plugin.deps]]
+use = "pirafrank/what-size"
+rev = "179ebf6"
+hash = "57056b9728006881d580ccabe8154a9c"
+
 [[flavor.deps]]
 use = "dangooddd/kanagawa"
 rev = "04985d1"
@@ -37,3 +57,8 @@ hash = "dc840cf225dbf6f0257617403ad43d8b"
 use = "Mintass/rose-pine"
 rev = "d91f8f2"
 hash = "87da3630653b6d272e43658418599188"
+
+[[flavor.deps]]
+use = "matt-dong-123/gruvbox-material"
+rev = "6c36491"
+hash = "564f2335540ee2c440c3b671bc28ac60"
