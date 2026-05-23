@@ -1,29 +1,32 @@
 [opener]
 edit = [
   { run = 'nvim "$@"', block = true, desc = "Neovim", for = "unix" },
-  { run = 'code "$@"', desc = "Code", for = "unix" },
+  { run = 'code "$@"', orphan = true, desc = "Code", for = "unix" },
 ]
 play = [
   { run = 'mpv %s', for = "unix" },
 ]
 open = [
-	{ run = 'kde-open "$1"', desc = "Open", for = "unix" },
+	{ run = 'xdg-open "$1"', desc = "Open", for = "unix" },
   { run = 'nvim .', block = true, desc = "Neovim (PWD)" },
-  { run = 'code .', block = true, desc = "Code (PWD)" },
+  { run = 'code .', orphan = true, block = false, desc = "Code (PWD)" },
 ]
 dir = [
   { run = 'sh -c "cd \"$1\" && nvim " -- "" "%s"', desc = "Neovim", block = true, for = "unix" },
   { run = '"$0"code %s', desc = "Code", for = "unix" },
 ]
 pdf = [
-  { run = 'zathura %s', block = false, desc = "Zathura" }
+  { run = 'zathura %s', block = true, desc = "Zathura" }
+]
+drawio = [
+  { run = 'drawio "$@"', orphan = true, block = false, desc = "Drawio" }
 ]
 
 [open]
 prepend_rules = [
   { url = "*/", use = [ "dir", "open" ] },
   { url = "*.pdf", use = [ "pdf", "open" ]},
-  { url = "*.drawio", use = "open" },
+  { url = "*.drawio", use = "drawio" },
   { url = "*.sql", use = "open" },
   { mime = "{audio,video}/*", use = "play" },
   { mime = "text/*", use = "edit" },

@@ -39,3 +39,6 @@ PS2="\[$(tput setaf 4)\]>\[$(tput sgr0)\] "
 
 . "/home/safi/.deno/env"
 . "$HOME/.cargo/env"
+
+# Created by `pipx` on 2026-05-19 20:11:29
+export PATH="$PATH:/home/safi/.local/bin"

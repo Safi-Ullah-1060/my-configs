@@ -25,10 +25,24 @@ return {
       require("telescope").setup({
         defaults = {
           layout_strategy = "horizontal",
+          vimgrep_arguments = {
+            "rg",
+            "--color=never",
+            "--no-heading",
+            "--with-filename",
+            "--line-number",
+            "--column",
+            "--smart-case",
+            "--hidden",    -- This includes hidden files (like .conf)
+            "--no-ignore", -- This ignores .gitignore rules
+          },
           mappings = {
             i = {
-              ["<C-j>"] = "move_selection_next", ["<C-k>"] = "move_selection_previous", ["<c-d>"] = actions
-            .delete_buffer, },
+              ["<C-j>"] = "move_selection_next",
+              ["<C-k>"] = "move_selection_previous",
+              ["<c-d>"] = actions
+                  .delete_buffer,
+            },
           },
           n = {
             ["<c-d>"] = actions.delete_buffer,

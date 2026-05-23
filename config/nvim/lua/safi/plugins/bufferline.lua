@@ -14,12 +14,12 @@ return {
           bold      = true,
           italic    = false,
           underline = true,
-          sp        = "#ff9e3b", -- roninYellow from kanagawa-dragon
+          sp        = "#f0f0f0", -- roninYellow from kanagawa-dragon
         },
         indicator_selected = {
-          fg        = "#ff9e3b",
+          fg        = "#f0f0f0",
           underline = true,
-          sp        = "#ff9e3b",
+          sp        = "#f0f0f0",
         },
       },
       options = {

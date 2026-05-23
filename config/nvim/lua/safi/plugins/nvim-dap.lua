@@ -114,7 +114,7 @@ return {
         if vim.fn.isdirectory(bdir) == 0 then vim.fn.mkdir(bdir, "p") end
 
         local cfg = vim.fn.system(string.format(
-          "cmake -S %s -B %s -DCMAKE_BUILD_TYPE=%s",
+          "cmake -S %s -B %s -DCMAKE_BUILD_TYPE=%s -G Ninja",
           vim.fn.shellescape(root), vim.fn.shellescape(bdir), build_type))
         if vim.v.shell_error ~= 0 then
           vim.notify("[cmake] Configure FAILED:\n" .. cfg, vim.log.levels.ERROR); return nil

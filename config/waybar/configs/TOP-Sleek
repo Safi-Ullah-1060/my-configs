@@ -1,0 +1,49 @@
+/* ---- 💫 https://github.com/LinuxBeginnings 💫 ---- */
+// Sleek
+
+{
+"include": [
+  "$HOME/.config/waybar/Modules",
+  "$HOME/.config/waybar/ModulesWorkspaces",
+  "$HOME/.config/waybar/ModulesCustom",
+  "$HOME/.config/waybar/ModulesGroups",
+  "$HOME/.config/waybar/UserModules",
+  ],
+"layer": "top",
+"position": "top",
+"height": 14,
+"margin-left": 10,
+"margin-right": 10,
+"margin-top": 2,
+	
+"modules-left": [
+	"custom/separator#blank_2",
+	"custom/arch",
+	"hyprland/workspaces#numbers",
+	"custom/separator#blank_2",
+	"hyprland/workspaces#windows"
+],
+
+"modules-center": [
+  "custom/menu",
+	"custom/separator#blank",
+	"idle_inhibitor",
+	"custom/separator#blank",
+	"clock#3",
+	"custom/separator#blank",
+	"group/notify"
+],
+		
+"modules-right": [
+	"hyprland/window",
+	"custom/separator#blank_2",
+	"tray",
+	"custom/separator#blank_2",
+	"pulseaudio",
+	"custom/separator#blank",
+	"group/laptop",
+	"group/mobo_drawer",
+	"custom/nightlight",
+	"custom/power",					
+	],
+}

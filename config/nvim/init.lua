@@ -3,7 +3,7 @@ require("safi.lazy")
 require("safi.lsp")
 vim.g.uni = "~/dotfiles/config"
 vim.o.background = "dark"
-vim.cmd([[colorscheme gruvbox]])
+vim.cmd([[colorscheme no-clown-fiesta]])
 vim.g.uni = "~/Uni Data/Sem IV"
 if vim.g.neovide then
   local opacity = io.popen("bash -c $HOME/.config/nvim/read-term-opacity.sh")
